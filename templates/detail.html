@@ -26,6 +26,7 @@
             padding: 0;
             box-sizing: border-box;
         }
+
         a, li, ul {
             list-style: none;
             text-decoration: none;
@@ -39,7 +40,9 @@
 
 
         .wrap {
+
             width: 100%;
+
         }
         header {
             background: #1e1e1e;
@@ -54,7 +57,7 @@
         }
 
         .header-inner {
-            padding: 20px 0;
+            padding: 10px 0;
         }
 
         .logo {
@@ -85,10 +88,10 @@
 
 
         .btn {
-            margin: 0 auto;
+
             display: block;
             text-align: center;
-            padding-right: 50px;
+            padding-bottom: 20px;
 
         }
 
@@ -131,7 +134,25 @@
              border-collapse: separate;
         }
 
+        footer {
+            height: 180px;
+            bottom: 0;
+            position: fixed;
+            left: 0;
+            right: 0;
 
+       }
+
+       .footer-inner {
+           position: relative;
+       }
+
+       .footer-txt {
+           font-family: none;
+           position: absolute;
+           left: 0px;
+           top: 130px;
+       }
     </style>
 
 </head>
@@ -196,7 +217,7 @@
             <option value="5">⭐⭐⭐⭐⭐</option>
         </select>
             </div>
-            <textarea type="text" id="desc" cols="88" rows="3" placeholder="리뷰를 입력해주세요"></textarea>
+            <textarea type="text" id="desc" cols="77" rows="3" placeholder="리뷰를 입력해주세요"></textarea>
         <p class="btn">
 
 
@@ -206,6 +227,10 @@
 
         </div>
     </div>
-
+    <footer class="wrap">
+        <div class="common-inner footer-inner">
+            <p class="footer-txt">© 2022 mini-project</p>
+        </div>
+    </footer>
 </body>
 </html>
