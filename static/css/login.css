@@ -111,6 +111,10 @@
   transition: background-color var(--animation-duration) ease-in-out;
 }
 
+.login-btn__margin-top {
+  margin-top: 30px;
+}
+
 .login-btn:hover,
 .signup-btn:hover {
   background-color: #7b583d;
