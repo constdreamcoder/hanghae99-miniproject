@@ -14,116 +14,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;0,800;1,500;1,700&display=swap"
           rel="stylesheet">
     <title>test</title>
+    <link rel="stylesheet" href="../static/css/common.css">
+
     <style>
-        * {
-            font-family: 'Noto Serif KR', serif;
-            font-family: 'Playfair Display', serif;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        a, li, ul {
-            list-style: none;
-            text-decoration: none;
-            color: black;
-        }
-
-        .wrap {
-            width: 100%;
-        }
-
-        .common-inner {
-            max-width: 1000px;
-            width: 90%;
-            margin: 0 auto;
-        }
-
-        .list-link:hover,
-        .btn-link:hover,
-        .card-title {
-            color: black;
-            font-weight: 700;
-        }
-
-
-        header {
-            background: #1e1e1e;
-            height: 80px;
-        }
-
-        .header-inner,
-        .nav-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .header-inner {
-            padding: 20px 0;
-        }
-
-        .logo {
-            font-size: 30px;
-        }
-
-        .logo,
-        .nav-item a {
-            color: white;
-        }
-
-        .nav-bar {
-            margin-bottom: 0;
-        }
-
-        .btn-link {
-            color: black;
-            text-decoration: none;
-        }
-
-        .main-wrap {
-            margin-top: 85px;
-        }
-
-        .banner-wrap {
-            width: 88%;
-        }
-
-        .banner-inner {
-            max-width: 870px;
-            width: 90%;
-            height: 485px;
-
-            background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://www.ggfc.or.kr/uploads/location/data/D20180611591081.jpg");
-            background-size: cover;
-            background-position: center;
-
-            color: white;
-            text-align: center;
-            padding: 70px 60px 50px;
-            margin: 0 auto;
-            border-radius: 10px;
-
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .title,
-        .title-desc {
-            margin-bottom: 20px;
-        }
-
-        .btn-post {
-            color: white;
-            border: 1px solid #cbcbcb;
-            background: rgba(211, 126, 13, 0.91);
-            padding: 4px 20px;
-            margin-top: 10px;
-        }
-
-
         /*  list style  */
         .content-wrap {
             margin: 85px auto;
@@ -155,168 +48,149 @@
             width: 100%;
             /*height: 200px;*/
         }
-
-
-        footer {
-            height: 180px;
-            background: #eee;
-
-            margin-top: 100px;
-        }
-
-        .footer-inner {
-            position: relative;
-        }
-
-        .footer-txt {
-            font-family: none;
-            position: absolute;
-            left: 0px;
-            top: 130px;
-        }
     </style>
 </head>
 <body>
-    <header class="wrap">
-        <div class="common-inner header-inner">
-            <h1 class='logo'>local Michelin</h1>
-            <ul class="nav-bar">
-                <li class="nav-item">
-                    <a href="/login" class="btn btn-link">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/sign" class="btn btn-link">Sign Up</a>
-                </li>
-            </ul>
-        </div>
-    </header>
+<header class="wrap">
+    <div class="common-inner header-inner">
+        <h1 class='logo'>Local Michelin</h1>
+        <ul class="nav-bar">
+            <li class="nav-item">
+                <a href="/login" class="btn btn-link">Login</a>
+            </li>
+            <li class="nav-item">
+                <a href="/login" class="btn btn-link">Sign Up</a>
+            </li>
+        </ul>
+    </div>
+</header>
 
-    <div class="wrap main-wrap">
-        <div class="common-inner banner-wrap">
-            <div class="banner-inner">
-                <h2 class="title">local Michelin</h2>
-                <p class="title-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus, neque, recusandae.
-                </p>
-                <a href="/posting_page" class="btn btn-post">Post</a>
-            </div>
+<div class="wrap main-wrap">
+    <div class="common-inner banner-wrap">
+        <div class="banner-inner">
+            <h2 class="title">local Michelin</h2>
+            <p class="title-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus, neque, recusandae.
+            </p>
+            <a href="/post" class="btn btn-post">Post</a>
         </div>
-        <div class="common-inner content-wrap">
-            <div class="content-inner">
-                <p class="content-title">인기 맛집</p>
-                <span><a href="/list-page" class="btn-link">전체보기</a></span>
-                <div class="row row-cols-1 row-cols-md-4 g-4">
-                    <div class="col">
-                        <div class="card h-100">
-                            <a href="#" class="list-link">
-                                <img src="https://2.gall-img.com/hygall/files/attach/images/82/728/080/307/34027a4a97ee5db5894440ecf3eb4862.jpg"
-                                     class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a longer card with supporting text below as a natural
-                                    </p>
-                                </div>
-                            </a>
-                        </div>
+    </div>
+    <div class="common-inner content-wrap">
+        <div class="content-inner">
+            <p class="content-title">인기 맛집</p>
+            <span><a href="#" class="btn-link">전체보기</a></span>
+            <div class="row row-cols-1 row-cols-md-4 g-4">
+                <div class="col">
+                    <div class="card h-100">
+                        <a href="/detail" class="list-link">
+                            <img src="https://2.gall-img.com/hygall/files/attach/images/82/728/080/307/34027a4a97ee5db5894440ecf3eb4862.jpg"
+                                 class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">This is a longer card with supporting text below as a natural
+                                </p>
+                            </div>
+                        </a>
                     </div>
-                    <div class="col">
-                        <div class="card h-100">
-                            <a href="#" class="list-link">
-                                <img src="https://pbs.twimg.com/media/ElGH6xZUUAAITVA?format=jpg&name=large"
-                                     class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a short card.</p>
-                                </div>
-                            </a>
-                        </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100">
+                        <a href="/detail" class="list-link">
+                            <img src="https://pbs.twimg.com/media/ElGH6xZUUAAITVA?format=jpg&name=large"
+                                 class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">This is a short card.</p>
+                            </div>
+                        </a>
                     </div>
-                    <div class="col">
-                        <div class="card h-100">
-                            <a href="#" class="list-link">
-                                <img src="https://t1.daumcdn.net/cfile/tistory/997297335A24FD401B" class="card-img-top"
-                                     alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a longer card with supporting text below as a natural
-                                    </p>
-                                </div>
-                            </a>
-                        </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100">
+                        <a href="/detail" class="list-link">
+                            <img src="https://t1.daumcdn.net/cfile/tistory/997297335A24FD401B" class="card-img-top"
+                                 alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">This is a longer card with supporting text below as a natural
+                                </p>
+                            </div>
+                        </a>
                     </div>
-                    <div class="col">
-                        <div class="card h-100">
-                            <a href="#" class="list-link">
-                                <img src="https://mp-seoul-image-production-s3.mangoplate.com/1723486_1604913545178474.jpg?fit=around|738:738&crop=738:738;*,*&output-format=jpg&output-quality=80"
-                                     class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a longer card with supporting text below as a natural
-                                    </p>
-                                </div>
-                            </a>
-                        </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100">
+                        <a href="/detail" class="list-link">
+                            <img src="https://mp-seoul-image-production-s3.mangoplate.com/1723486_1604913545178474.jpg?fit=around|738:738&crop=738:738;*,*&output-format=jpg&output-quality=80"
+                                 class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">This is a longer card with supporting text below as a natural
+                                </p>
+                            </div>
+                        </a>
                     </div>
-                    <div class="col">
-                        <div class="card h-100">
-                            <a href="#" class="list-link">
-                                <img src="https://t1.daumcdn.net/cfile/tistory/997297335A24FD401B" class="card-img-top"
-                                     alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a longer card with supporting text below as a natural
-                                    </p>
-                                </div>
-                            </a>
-                        </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100">
+                        <a href="/detail" class="list-link">
+                            <img src="https://t1.daumcdn.net/cfile/tistory/997297335A24FD401B" class="card-img-top"
+                                 alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">This is a longer card with supporting text below as a natural
+                                </p>
+                            </div>
+                        </a>
                     </div>
-                    <div class="col">
-                        <div class="card h-100">
-                            <a href="#" class="list-link">
-                                <img src="https://t1.daumcdn.net/cfile/tistory/997297335A24FD401B" class="card-img-top"
-                                     alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a longer card with supporting text below as a natural
-                                    </p>
-                                </div>
-                            </a>
-                        </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100">
+                        <a href="/detail" class="list-link">
+                            <img src="https://t1.daumcdn.net/cfile/tistory/997297335A24FD401B" class="card-img-top"
+                                 alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">This is a longer card with supporting text below as a natural
+                                </p>
+                            </div>
+                        </a>
                     </div>
-                    <div class="col">
-                        <div class="card h-100">
-                            <a href="#" class="list-link">
-                                <img src="https://2.gall-img.com/hygall/files/attach/images/82/728/080/307/34027a4a97ee5db5894440ecf3eb4862.jpg"
-                                     class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a longer card with supporting text below as a natural
-                                    </p>
-                                </div>
-                            </a>
-                        </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100">
+                        <a href="/detail" class="list-link">
+                            <img src="https://2.gall-img.com/hygall/files/attach/images/82/728/080/307/34027a4a97ee5db5894440ecf3eb4862.jpg"
+                                 class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">This is a longer card with supporting text below as a natural
+                                </p>
+                            </div>
+                        </a>
                     </div>
-                    <div class="col">
-                        <div class="card h-100">
-                            <a href="#" class="list-link">
-                                <img src="https://2.gall-img.com/hygall/files/attach/images/82/728/080/307/34027a4a97ee5db5894440ecf3eb4862.jpg"
-                                     class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a longer card with supporting text below as a natural
-                                    </p>
-                                </div>
-                            </a>
-                        </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100">
+                        <a href="/detail" class="list-link">
+                            <img src="https://2.gall-img.com/hygall/files/attach/images/82/728/080/307/34027a4a97ee5db5894440ecf3eb4862.jpg"
+                                 class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">This is a longer card with supporting text below as a natural
+                                </p>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <footer class="wrap">
-        <div class="common-inner footer-inner">
-            <p class="footer-txt">© 2022 mini-project</p>
-        </div>
-    </footer>
+<footer class="wrap">
+    <div class="common-inner footer-inner">
+        <p class="footer-txt">© 2022 mini-project</p>
+    </div>
+</footer>
 </body>
 </html>
