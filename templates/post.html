@@ -21,26 +21,53 @@
     <style>
         .posting-inner {
             margin-top: 140px;
-            /*background: rgba(72, 187, 91, 0.57);*/
         }
+
+        .posting-title {
+            width: 100%;
+            max-width: 500px;
+            height: 80px;
+
+            font-size: 30px;
+            font-weight: 700;
+            text-align: center;
+            text-shadow: 0px 0px 0px gray;
+            line-height: 80px;
+            box-shadow: 0px 0px 3px 0px gray;
+            border-radius: 10px;
+
+            margin: 0px auto 80px;
+
+            overflow: hidden;
+        }
+
         .posting {
             background: #eee;
-            
+
             width: 95%;
             max-width: 700px;
-            padding: 20px;
-            box-shadow: 0px 0px 10px 0px lightblue;
+            padding: 46px 46px 30px;
+            box-shadow: 0px 0px 10px 0px #595959;
             margin: auto;
+            border-radius: 10px;
+
+        }
+
+        .posting > p {
+            margin-bottom: 0.9rem;
         }
 
         .btn-wrap {
             display: flex;
             justify-content: center;
+            margin-top: 30px;
         }
+
         .btn {
             width: 100px;
             border: 1px solid rgba(45, 45, 45, 0.87);
         }
+
         .btn:nth-child(1) {
             margin-right: 10px;
         }
@@ -98,10 +125,23 @@
 
 <div class="wrap posting-wrap content-wrap">
     <div class="common-inner posting-inner">
+        <p class="posting-title">맛집을 공유해주세요~ !!</p>
         <div class="posting">
-            <p> 지역 :
-                <select id='location'>
-                    <option selected>-- 선택 --</option>
+            <div class="mb-3">
+                <label for="url-link" class="form-label"><b>NAVER MAP</b> - URL</label>
+                <input type="email" class="form-control" id="url-link"
+                       placeholder="https://map.naver.com/v5/smart-around/place/">
+            </div>
+
+            <div class="mb-3">
+                <label for="store-name" class="form-label">- 가게이름</label>
+                <input type="email" class="form-control" id="store-name">
+            </div>
+
+            <div class="mb-3">
+                <p>- 지역을 선택해 주세요</p>
+                <select class="form-select" aria-label="Default select example">
+                    <option selected>어느 지역에 살고 계신가요?</option>
                     <option value='서울'>서울</option>
                     <option value='경기도,인천'>경기도,인천</option>
                     <option value='충청도,대전'>충청도,대전</option>
@@ -110,25 +150,17 @@
                     <option value='경상도,대구,부산'>경상도,대구,부산</option>
                     <option value='제주도'>제주도</option>
                 </select>
-            </p>
-            <p> 상호명 : <input type="text" id="name" placeholder="상호명을 입력해주세요"/></p>
-            <p> URL : <input type="url" id="address" placeholder="URL을 입력해주세요"></p>
-
-            <div class="form-floating mb-3">
-                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                <label for="floatingInput">NAVER URL</label>
             </div>
 
             <div class="mb-3">
-                <label for="exampleFormControlTextarea1" class="form-label">설명</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <label for="description" class="form-label">- 맛집을 설명해주세요</label>
+                <textarea class="form-control" id="description" rows="3"></textarea>
             </div>
 
             <div class="btn-wrap">
                 <button type="button" class="btn btn-dark">등록</button>
                 <button type="button" class="btn btn-light" onclick="window.location.href = '/'">취소</button>
             </div>
-
         </div>
     </div>
 </div>
