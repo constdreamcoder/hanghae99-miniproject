@@ -1,69 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Login/Signup Page</title>
-        <link rel="stylesheet" href="../static/css/login.css" />
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    </head>
-    <body>
-        <!-- Login/Signup Form -->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login/Signup Page</title>
+    <link rel="stylesheet" href="../static/css/navbar.css"/>
+    <link rel="stylesheet" href="../static/css/login.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/css/common.css">
+</head>
+<body>
+    <header class="wrap">
+        <div class="common-inner header-inner">
+            <h1 class='logo' onclick="window.location.href = '/'">Local Michelin</h1>
+            <ul class="nav-bar">
+                <li class="nav-item">
+                    <a href="/login" class="btn btn-link">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/login" class="btn btn-link">Sign Up</a>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <!-- Navbar
+    <section id="navbar">
+        <div class="navbar__logo">
+            <span>LOGO</span>
+        </div>
+        <div class="navbar__menu">
+            <ul>
+                <li class="navbar__menu__item">
+                    About
+                </li>
+                <li class="navbar__menu__item">
+                    Contact
+                </li>
+                <i class="far fa-user"></i>
+            </ul>
+        </div>
+    </section> -->
+
+    <!-- Login/Signup Form -->
+   <div class="content-wrap">
         <section class="wrapper">
-            <div class="wrapper-inside">
-                <div class="title">
-                    <div class="title-login">Login</div>
-                    <div class="title-signup">Signup</div>
+        <div class="wrapper-inside">
+            <div class="title">
+                <div class="title-login">Login</div>
+                <div class="title-signup">Signup</div>
+            </div>
+            <div class="form-container">
+                <div class="slide-controls edge-round">
+                    <input type="radio" name="slide" id="login" checked/>
+                    <input type="radio" name="slide" id="signup"/>
+                    <label for="login" class="slide login">Login</label>
+                    <label for="signup" class="slide signup">Signup</label>
+                    <div class="slider-tab edge-round"></div>
                 </div>
-                <div class="form-container">
-                    <div class="slide-controls edge-round">
-                        <input type="radio" name="slide" id="login" checked />
-                        <input type="radio" name="slide" id="signup" />
-                        <label for="login" class="slide login">Login</label>
-                        <label for="signup" class="slide signup">Signup</label>
-                        <div class="slider-tab edge-round"></div>
-                    </div>   
-                    <div class="form-inner">
+                <div class="form-inner">
 
-                        <!-- Login Form -->
-                        <div class="login-container">
-                            <div class="form-floating mb-3">
-                                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                                <label for="floatingInput">Email address</label>
-                            </div>
-                            <div class="form-floating">
-                                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                                <label for="floatingPassword">Password</label>
-                            </div>
-                            <div class="login-btn__margin-top">
-                                <button class="login-btn">Login</button>
-                            </div>
+                    <!-- Login Form -->
+                    <div class="login-container">
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                            <label for="floatingInput">Email address</label>
                         </div>
+                        <div class="form-floating">
+                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                            <label for="floatingPassword">Password</label>
+                        </div>
+                        <button class="login-btn">Login</button>
+                    </div>
 
-                        <!-- Signup Form -->
-                        <div class="signup-container">
-                            <div   div class="form-floating mb-3">
-                                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                                <label for="floatingInput">Email address</label>
-                            </div>
-                            <div   div class="form-floating mb-3">
-                                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                                <label for="floatingInput">Email address</label>
-                            </div>
-                            <div class="form-floating">
-                                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                                <label for="floatingPassword">Password</label>
-                            </div>
-                            <button class="login-btn">Signup</button>
+                    <!-- Signup Form -->
+                    <div class="signup-container">
+                        <div div class="form-floating mb-3">
+                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                            <label for="floatingInput">Email address</label>
                         </div>
+                        <div div class="form-floating mb-3">
+                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                            <label for="floatingInput">Email address</label>
+                        </div>
+                        <div class="form-floating">
+                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                            <label for="floatingPassword">Password</label>
+                        </div>
+                        <button class="login-btn">Signup</button>
                     </div>
                 </div>
             </div>
-        </section>
-    
-        <script src="https://kit.fontawesome.com/4f352d7f5e.js" crossorigin="anonymous"></script>
-        <script type="text/javascript" src="../static/js/loginCSS.js"></script>   
-    </body>
+        </div>
+    </section>
+   </div>
+
+    <footer class="wrap">
+        <div class="common-inner footer-inner">
+            <p class="footer-txt">© 2022 mini-project</p>
+        </div>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/4f352d7f5e.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="../static/js/loginCSS.js"></script>
+</body>
 </html>
 
