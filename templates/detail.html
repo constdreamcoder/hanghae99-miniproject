@@ -22,85 +22,6 @@
     <style>
 
 
-        .posting {
-            height: 300px;
-            width: 95%;
-            max-width: 700px;
-            padding: 20px;
-
-            margin: 30px auto;
-        }
-
-        .btn {
-            display: block;
-            text-align: center;
-            padding-bottom: 20px;
-
-        }
-
-        textarea {
-            resize: none;
-        }
-
-
-        .title {
-            text-align: center;
-            margin-top: 10px;
-            font-size: 75px;
-        }
-
-        h3 {
-            margin-top: 20px;
-        }
-
-        p {
-            margin-top: 20px;
-        }
-
-        .comment-body {
-            border-width: 3px 0 0 0;
-            border-style: dotted none;
-        }
-
-        .mycomment {
-            border-width: 3px 0 0 0;
-            border-style: dotted none;
-        }
-
-        .image {
-            margin-bottom: 50px;
-            background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
-            background-position: center;
-            background-size: cover;
-
-        }
-
-        .mytable {
-            margin-right: auto;
-            margin-left: auto;
-            border-spacing: 10px;
-            border-collapse: separate;
-        }
-
-        footer {
-            height: 180px;
-            bottom: 0;
-            position: fixed;
-            left: 0;
-            right: 0;
-
-        }
-
-        .footer-inner {
-            position: relative;
-        }
-
-        .footer-txt {
-            font-family: none;
-            position: absolute;
-            left: 0px;
-            top: 130px;
-        }
     </style>
 
 </head>
@@ -118,68 +39,84 @@
         </ul>
     </div>
 </header>
-<h1 class="title"> Title</h1>
 
+<div class="wrap content-wrap">
+    <div class="common-inner content-inner">
 
-<div class="posting">
-    <!-- img 태그로 일단 변경하고 코드 수정하자.   -->
-    <div class="image"
-         style="width:100%;height:100%;background-image:url(&quot;https://search.pstatic.net/common/?autoRotate=true&amp;type=w560_sharpen&amp;src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20200308_246%2F15836453743666yr0B_JPEG%2FcVqK7mX5kyxqMyQOj7140cgn.jpg&quot;);background-position:50% 0"
-         id="ibu_1"><span class="place_blind"></span></div>
+        <p class="detail-title">혹스턴</p>
 
-    <table class="mytable">
-        <tr>
-            <td>전화번호 :</td>
-            <td>123-4567</td>
-        </tr>
-        <tr>
-            <td>영업시간 :</td>
-            <td>10:00~22:00</td>
-        </tr>
-        <tr>
-            <td>설명 :</td>
-            <td> 버거킹</td>
-        </tr>
-    </table>
-    <!--  여기도  -->
-    <div class="cb7hz _div" style="width:100%;height:100%;background-image:url();background-position:50% 0" id=""><span
-            class="place_blind"></span></div>
-    <div class="comment">
-        <p>리뷰</p>
-        <div class="comment-body">
-            <h3>홍길동 </h3>
-            <p>⭐⭐⭐⭐</p>
-            <p>맛있어요</p>
+        <div class="detail-top">
+            <img src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220305_193%2F1646410056605EO1Sn_JPEG%2F271467333_629520225025538_5041099427267513676_n_%25281%2529.jpg&type=f&size=680x360"
+                 alt="가게 이미지">
+            <p class="store-num">Call : <span class="store-num number">02-314-8972</span></p>
+            <p class="store-time">11:00 - 22:00</p>
         </div>
-        <div class="comment-body">
-            <h3>이순신</h3>
-            <p>⭐⭐⭐⭐⭐</p>
-            <p>맛있어요</p>
-        </div>
-    </div>
-    <div class="mycomment">
-        <p>리뷰 작성</p>
-        <div class="input-group mb-3">
-            <label class="input-group-text">별점</label>
-            <select class="form-select" id="star">
-                <option selected>-- 선택하기 --</option>
-                <option value="1">⭐</option>
-                <option value="2">⭐⭐</option>
-                <option value="3">⭐⭐⭐</option>
-                <option value="4">⭐⭐⭐⭐</option>
-                <option value="5">⭐⭐⭐⭐⭐</option>
-            </select>
-        </div>
-        <textarea type="text" id="desc" cols="77" rows="3" placeholder="리뷰를 입력해주세요"></textarea>
-        <p class="btn">
 
+        <div class="store-decs">
+            <p class="desc-txt">거슬림 없는 편안한 커피를 내고자 합니다. As you like it, HOXTON.️</p>
+        </div>
+        <div class="store-map-part">
+            <p class="store-addr">서울 서대문구 연희동 188-4 2층</p>
+            <div class="store-map">
+                <!--        Api 사용해서 나타낼곳        -->
+            </div>
+        </div>
 
-            <button onclick="">작성</button>
-            <button onclick="">취소</button>
-        </p>
+        <div class="comment-wrap btn-wrap">
+            <p class="comment-title">rivew</p>
+            <ul class="comment-list">
+                <li class="comment-item">
+                    <span class="comment-name">동그리</span>
+                    <span class="comment-star">⭐⭐⭐⭐⭐️</span>
+                    <p class="comment-txt">
+                        집 바로 근처라 우연히 가오픈때 가본 후, 커피가 너무 맛있어서 자주 들러요. 일단 커피가 너무 맛있고 원두 고민하고있으면 친절히 설명과 추천도 해주셔서 좋았습니다. 라떼도
+                        맛있어요 !
+                    </p>
+                </li>
+                <li class="comment-item">
+                    <span class="comment-name">hyebi</span>
+                    <span class="comment-star">⭐⭐⭐⭐️</span>
+                    <p class="comment-txt">
+                        슬슬 졸리면서 당떨어져가는 오후타임에
+                        혹스턴 크림라떼 한잔 하면 눈이 번쩍 떠져요ㅎㅎ
+                        쫀득 부드러운 크림이랑 커피 궁합 너무 좋구요
+                        또 다른 최애메뉴인 바닐라라떼는 진한데 쓰지 않고 고소해요.
+                        저번에 필터커피도 한번 마셔봤는데
+                        향 너무 좋고 부드러웠어요
+                        직원분들도 친절하셔서 언제가도 기분 좋은곳!
+                    </p>
+                </li>
+                <li class="comment-item">
+                    <span class="comment-name">liber_025</span>
+                    <span class="comment-star">⭐⭐⭐⭐⭐️</span>
+                    <p class="comment-txt">
+                        커피가 맛있고 사장님이 친절해요 💟☕️
+                    </p>
+                </li>
+                <li class="comment-item">
+                    <span class="comment-name">Tonag</span>
+                    <span class="comment-star">⭐⭐️⭐</span>
+                    <p class="comment-txt">
+                        생긴지얼마안됬더라구요~ 분위기좋구 조용해서 좋앗어요 커피맛은 괜찮은데 양이 좀 적어요 ㅎㅎ
+                    </p>
+                </li>
+            </ul>
+        </div>
+
+        <div class="mb-3 comment-write">
+            <label for="description" class="form-label write-title">reviw write</label>
+            <textarea class="form-control" id="description" rows="3"></textarea>
+            <div class="btn write-btn">
+                <button type="button" class="btn btn-dark">등록</button>
+                <button type="button" class="btn btn-light">취소</button>
+            </div>
+        </div>
+
 
     </div>
 </div>
+
+
 <footer class="wrap">
     <div class="common-inner footer-inner">
         <p class="footer-txt">© 2022 mini-project</p>
