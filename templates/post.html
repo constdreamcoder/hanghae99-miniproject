@@ -46,11 +46,17 @@
             height: 80px;
         }
 
-        .header-inner,
+        .header-inner{
+            display: flex;
+            justify-content: space-between ;
+            align-items: center;
+        }
+
         .nav-bar {
             display: flex;
-            justify-content: space-between;
+            justify-content: space-between ;
             align-items: center;
+
         }
 
         .header-inner {
@@ -114,9 +120,42 @@
             margin-left: 16px;
         }
 
+        footer {
+           height: 180px;
+          background: #eee;
 
+           margin-top: 100px;
+       }
+       .footer-inner {
+           position: relative;
+       }
+
+       .footer-txt {
+           font-family: none;
+           position: absolute;
+           left: 0px;
+           top: 130px;
+       }
     </style>
+    <script>
+        function save_comment() {
+            let location = $('#location').val()
+            let name = $('#name').val()
+            let address = $('#address').val()
+            let desc = $('#desc').val()
 
+            $.ajax({
+                type: "POST",
+                url: "/post_page",
+                data: {'location_give':location,'name_give':name, 'address_give':address, 'desc_give':desc},
+                success: function (response) {
+                    alert(response["msg"])
+                    console.log(response)
+                    window.location.reload()
+                }
+            });
+        }
+    </script>
 </head>
 <body>
      <header class="wrap">
@@ -152,10 +191,14 @@
         <p>설명<p><textarea id="desc" cols="80" rows="10" placeholder="내용을 입력해주세요"></textarea>
         <p class="btn">
             <button onclick="">등록</button>
-            <button onclick="">취소</button>
+            <button onclick="window.location.href = '/'">취소</button>
         </p>
 
     </div>
-
+    <footer class="wrap">
+        <div class="common-inner footer-inner">
+            <p class="footer-txt">© 2022 mini-project</p>
+        </div>
+    </footer>
 </body>
 </html>
