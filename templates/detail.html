@@ -15,13 +15,131 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;0,800;1,500;1,700&display=swap"
           rel="stylesheet">
+
     <link rel="stylesheet" href="../static/css/common.css">
 
     <title>Local Michelin</title>
 
     <style>
+        .detail-title {
+            font-size: 32px;
+            text-align: center;
+        }
+        .detail-sub-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #838383;
+        }
 
+        .detail-top {
+            max-width: 660px;
+            width: 100%;
 
+            margin: 0 auto 50px;
+
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
+        .detail-top > img {
+            border-radius: 16px;
+            border: 1px solid gray;
+            box-shadow: 3px 3px 7px 1px gray;
+
+            width: 100%;
+
+            margin-bottom: .5rem;
+        }
+
+        .store-decs {
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 3px 3px 7px 1px gray;
+            padding: 15px 15px 10px;
+            margin: 0 auto 60px;
+
+            background: #eee;
+        }
+        .store-decs > p {
+            margin-bottom: 10px;
+        }
+        .desc-title {
+            font-size: 26px;
+        }
+
+        .store-map-part {
+            width: 90%;
+            max-width: 700px;
+            margin: auto;
+            margin-bottom: 100px;
+            overflow: hidden;
+
+            background: #d2b7b7;
+
+            border-radius: 10px;
+        }
+        .store-addr {
+            padding: 0 10px;
+            margin-bottom: 10px;
+        }
+        .store-addr-icon {
+            font-size: 24px;
+        }
+        .store-map {
+            width: 100%;
+            height: 300px;
+            background: #eee;
+        }
+
+        .comment-wrap {
+            width: 100%;
+            max-width: 860px;
+            margin: auto;
+            margin-bottom: 20px;
+            padding: 14px 20px;
+
+            border-top: 2px dotted gray;
+        }
+        .comment-title {
+            font-weight: 700;
+            font-size: 20px;
+            letter-spacing: 2px;
+        }
+        .comment-item {
+            padding: 5px 0;
+            border-top: 1px dotted gray;
+        }
+        .comment-name {
+            margin-bottom: 5px;
+        }
+        .comment-star {
+            margin-left: 14px;
+        }
+        .comment-write {
+            width: 100%;
+            max-width: 860px;
+            margin: auto;
+
+            border-radius: 10px;
+            background: #eeeeee;
+        }
+
+        .write-title {
+            margin-bottom: 10px;
+            padding: 10px 20px 0;
+            font-weight: 600;
+            letter-spacing: 1px;
+            /*background: #aaa;*/
+        }
+        .write-btn {
+            display: flex;
+            justify-content: flex-end;
+            background: #ccc;
+        }
+        .btn-dark {
+            margin-right: 14px;
+        }
     </style>
 
 </head>
@@ -40,10 +158,10 @@
     </div>
 </header>
 
-<div class="wrap content-wrap">
+<div class="wrap main-wrap">
     <div class="common-inner content-inner">
 
-        <p class="detail-title">혹스턴</p>
+        <p class="detail-title">Hoxton <span class="detail-sub-title">혹스턴</span></p>
 
         <div class="detail-top">
             <img src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220305_193%2F1646410056605EO1Sn_JPEG%2F271467333_629520225025538_5041099427267513676_n_%25281%2529.jpg&type=f&size=680x360"
@@ -53,29 +171,29 @@
         </div>
 
         <div class="store-decs">
+            <p class="desc-title">📋 소개</p>
             <p class="desc-txt">거슬림 없는 편안한 커피를 내고자 합니다. As you like it, HOXTON.️</p>
         </div>
+
         <div class="store-map-part">
-            <p class="store-addr">서울 서대문구 연희동 188-4 2층</p>
+            <p class="store-addr"><span class="store-addr-icon">📍</span>서울 서대문구 연희동 188-4 2층</p>
             <div class="store-map">
                 <!--        Api 사용해서 나타낼곳        -->
             </div>
         </div>
 
-        <div class="comment-wrap btn-wrap">
+        <div class="comment-wrap">
             <p class="comment-title">rivew</p>
             <ul class="comment-list">
                 <li class="comment-item">
-                    <span class="comment-name">동그리</span>
-                    <span class="comment-star">⭐⭐⭐⭐⭐️</span>
+                    <p class="comment-name">🙋‍♂️ 동그리<span class="comment-star">⭐⭐⭐⭐⭐️</span></p>
                     <p class="comment-txt">
                         집 바로 근처라 우연히 가오픈때 가본 후, 커피가 너무 맛있어서 자주 들러요. 일단 커피가 너무 맛있고 원두 고민하고있으면 친절히 설명과 추천도 해주셔서 좋았습니다. 라떼도
                         맛있어요 !
                     </p>
                 </li>
                 <li class="comment-item">
-                    <span class="comment-name">hyebi</span>
-                    <span class="comment-star">⭐⭐⭐⭐️</span>
+                    <p class="comment-name">🙋‍♂️ hyebi<span class="comment-star">⭐⭐⭐⭐️</span></p>
                     <p class="comment-txt">
                         슬슬 졸리면서 당떨어져가는 오후타임에
                         혹스턴 크림라떼 한잔 하면 눈이 번쩍 떠져요ㅎㅎ
@@ -87,15 +205,13 @@
                     </p>
                 </li>
                 <li class="comment-item">
-                    <span class="comment-name">liber_025</span>
-                    <span class="comment-star">⭐⭐⭐⭐⭐️</span>
+                    <p class="comment-name">🙋‍♂️ liber_025<span class="comment-star">⭐⭐⭐⭐⭐️</span></p>
                     <p class="comment-txt">
                         커피가 맛있고 사장님이 친절해요 💟☕️
                     </p>
                 </li>
                 <li class="comment-item">
-                    <span class="comment-name">Tonag</span>
-                    <span class="comment-star">⭐⭐️⭐</span>
+                    <p class="comment-name">🙋‍♂️ ️Tonag<span class="comment-star">⭐⭐️⭐</span></p>
                     <p class="comment-txt">
                         생긴지얼마안됬더라구요~ 분위기좋구 조용해서 좋앗어요 커피맛은 괜찮은데 양이 좀 적어요 ㅎㅎ
                     </p>
