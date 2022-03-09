@@ -17,6 +17,7 @@
           rel="stylesheet">
 
     <link rel="stylesheet" href="../static/css/common.css">
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=a5b4c5pivi"></script>
 
     <title>Local Michelin</title>
 
@@ -75,13 +76,19 @@
             margin-bottom: 100px;
             overflow: hidden;
 
-            background: #d2b7b7;
+            border: 2px solid #bebebe;
 
             border-radius: 10px;
         }
         .store-addr {
             padding: 0 10px;
-            margin-bottom: 10px;
+            margin-bottom: 0px;
+            padding-bottom: 10px;
+            font-weight: 700;
+            /*color: white;*/
+            background: rgba(231, 227, 227, 0.63);
+
+            border-bottom: 2px solid gray;
         }
         .store-addr-icon {
             font-size: 24px;
@@ -89,7 +96,6 @@
         .store-map {
             width: 100%;
             height: 300px;
-            background: #eee;
         }
 
         .comment-wrap {
@@ -177,10 +183,21 @@
 
         <div class="store-map-part">
             <p class="store-addr"><span class="store-addr-icon">📍</span>서울 서대문구 연희동 188-4 2층</p>
-            <div class="store-map">
+            <div id="map" class="store-map">
                 <!--        Api 사용해서 나타낼곳        -->
             </div>
         </div>
+        <script>
+            let map = new naver.maps.Map('map', {
+                center: new naver.maps.LatLng(37.3595704, 127.105399),
+                zoom: 15
+            });
+
+            let marker = new naver.maps.Marker({
+                position: new naver.maps.LatLng(37.3595704, 127.105399),
+                map: map
+            });
+        </script>
 
         <div class="comment-wrap">
             <p class="comment-title">rivew</p>
