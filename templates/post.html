@@ -78,16 +78,18 @@
     </style>
 
     <script>
-        function save_comment() {
+        function save_store() {
             let location = $('#location').val()
-            let name = $('#name').val()
-            let address = $('#address').val()
-            let desc = $('#desc').val()
+            let store_name = $('#store_name').val()
+            let url_link = $('#url_link').val()
+            let description = $('#description').val()
 
             $.ajax({
                 type: "POST",
-                url: "/post_page",
-                data: {'location_give': location, 'name_give': name, 'address_give': address, 'desc_give': desc},
+                url: "/post",
+                data: {location_give: location, store_name_give: store_name,
+                    url_link_give: url_link, description_give: description
+                    },
                 success: function (response) {
                     alert(response["msg"])
                     console.log(response)
@@ -118,19 +120,19 @@
         <p class="posting-title">맛집을 공유해주세요~ !!</p>
         <div class="posting">
             <div class="mb-3">
-                <label for="url-link" class="form-label"><b>NAVER MAP</b> - URL</label>
-                <input type="email" class="form-control" id="url-link"
+                <label for="url_link" class="form-label"><b>NAVER MAP</b> - URL</label>
+                <input type="email" class="form-control" id="url_link"
                        placeholder="https://map.naver.com/v5/smart-around/place/">
             </div>
 
             <div class="mb-3">
-                <label for="store-name" class="form-label">- 가게이름</label>
-                <input type="email" class="form-control" id="store-name">
+                <label for="store_name" class="form-label">- 가게이름</label>
+                <input type="email" class="form-control" id="store_name">
             </div>
 
             <div class="mb-3">
                 <p>- 지역을 선택해 주세요</p>
-                <select class="form-select" aria-label="Default select example">
+                <select class="form-select" aria-label="Default select example" id="location">
                     <option selected>어느 지역에 살고 계신가요?</option>
                     <option value='서울'>서울</option>
                     <option value='경기도,인천'>경기도,인천</option>
@@ -148,7 +150,7 @@
             </div>
 
             <div class="btn-wrap">
-                <button type="button" class="btn btn-dark">등록</button>
+                <button type="button" class="btn btn-dark" onclick="save_store()">등록</button>
                 <button type="button" class="btn btn-light" onclick="window.location.href = '/'">취소</button>
             </div>
         </div>

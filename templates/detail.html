@@ -141,6 +141,56 @@
             margin-right: 14px;
         }
     </style>
+    <script>
+        $(document).ready(function () {
+            show_detail();
+        });
+
+        function show_detail() {
+            $.ajax({
+                type: "GET",
+                url: "/matjip/detail",
+                data: {},
+                success: function (response) {
+                    let rows = response['matjip_list']
+                    console.log(rows)
+
+                    for (let i = 0; i < rows.length; i++) {
+                        let src = rows[i]['src']
+                        let description = rows[i]['description']
+                        let callnum = rows[i]['callnum']
+                        let opentime = rows[i]['opentime']
+                        let adress = rows[i]['adress']
+                        let store_name = rows[i]['store_name']
+                        let num = rows[i]['num']
+
+
+                        let temp_html = `<p class="detail-title">${store_name} <span class="detail-sub-title">${store_name}</span></p>
+
+                                            <div class="detail-top">
+                                                <img src="${src}"
+                                                      class="card-img-top" alt="${num}">
+                                                <p class="store-num">Call : <span class="store-num number">${callnum}</span></p>
+                                                <p class="store-time">${opentime}</p>
+                                            </div>
+
+                                            <div class="store-decs">
+                                                <p class="desc-title">📋 소개</p>
+                                                <p class="desc-txt">${description}</p>
+                                            </div>
+
+                                            <div class="store-map-part">
+                                                <p class="store-addr"><span class="store-addr-icon">📍</span>${adress}</p>
+                                                <div class="store-map">
+                                                    <!--        Api 사용해서 나타낼곳        -->
+                                                </div>
+                                            </div>`
+                             $('#matjip-detail').append(temp_html)
+                    }
+                }
+            });
+        }
+    </script>
 
 </head>
 <body>
@@ -159,28 +209,12 @@
 </header>
 
 <div class="wrap main-wrap">
-    <div class="common-inner content-inner">
+    <div class="common-inner content-inner" >
+        <div id="matjip-detail">
 
-        <p class="detail-title">Hoxton <span class="detail-sub-title">혹스턴</span></p>
 
-        <div class="detail-top">
-            <img src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220305_193%2F1646410056605EO1Sn_JPEG%2F271467333_629520225025538_5041099427267513676_n_%25281%2529.jpg&type=f&size=680x360"
-                 alt="가게 이미지">
-            <p class="store-num">Call : <span class="store-num number">02-314-8972</span></p>
-            <p class="store-time">11:00 - 22:00</p>
         </div>
 
-        <div class="store-decs">
-            <p class="desc-title">📋 소개</p>
-            <p class="desc-txt">거슬림 없는 편안한 커피를 내고자 합니다. As you like it, HOXTON.️</p>
-        </div>
-
-        <div class="store-map-part">
-            <p class="store-addr"><span class="store-addr-icon">📍</span>서울 서대문구 연희동 188-4 2층</p>
-            <div class="store-map">
-                <!--        Api 사용해서 나타낼곳        -->
-            </div>
-        </div>
 
         <div class="comment-wrap">
             <p class="comment-title">rivew</p>

@@ -49,6 +49,50 @@
             /*height: 200px;*/
         }
     </style>
+    <script>
+        $(document).ready(function () {
+            show_matjip();
+        });
+
+        function show_matjip() {
+
+
+
+
+            $.ajax({
+                type: "GET",
+                url: "/matjip",
+                data: {},
+                success: function (response) {
+                    let rows = response['matjip_list']
+                    console.log(rows)
+                    for (let i = 0; i < rows.length; i++) {
+                        let store_name = rows[i]['store_name']
+                        let description = rows[i]['description']
+                        let src = rows[i]['src']
+                        let num = rows[i]['num']
+
+                        let temp_html = `<div class="col">
+                                                <div class="card h-100">
+                                                    <a href="/detail" class="list-link" >
+                                                        <img src="${src}"
+                                                             class="card-img-top" alt="${num}" >
+                                                        <div class="card-body">
+                                                            <h5 class="card-title">${store_name}</h5>
+                                                            <p class="card-text">${description}
+                                                            </p>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>`
+                        $('#matjip-list').append(temp_html)
+                    }
+                }
+            });
+        }
+
+
+    </script>
 </head>
 <body>
 <header class="wrap">
@@ -78,110 +122,8 @@
         <div class="content-inner">
             <p class="content-title">인기 맛집</p>
             <span><a href="#" class="btn-link">전체보기</a></span>
-            <div class="row row-cols-1 row-cols-md-4 g-4">
-                <div class="col">
-                    <div class="card h-100">
-                        <a href="/detail" class="list-link">
-                            <img src="https://2.gall-img.com/hygall/files/attach/images/82/728/080/307/34027a4a97ee5db5894440ecf3eb4862.jpg"
-                                 class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural
-                                </p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card h-100">
-                        <a href="/detail" class="list-link">
-                            <img src="https://pbs.twimg.com/media/ElGH6xZUUAAITVA?format=jpg&name=large"
-                                 class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a short card.</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card h-100">
-                        <a href="/detail" class="list-link">
-                            <img src="https://t1.daumcdn.net/cfile/tistory/997297335A24FD401B" class="card-img-top"
-                                 alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural
-                                </p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card h-100">
-                        <a href="/detail" class="list-link">
-                            <img src="https://mp-seoul-image-production-s3.mangoplate.com/1723486_1604913545178474.jpg?fit=around|738:738&crop=738:738;*,*&output-format=jpg&output-quality=80"
-                                 class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural
-                                </p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card h-100">
-                        <a href="/detail" class="list-link">
-                            <img src="https://t1.daumcdn.net/cfile/tistory/997297335A24FD401B" class="card-img-top"
-                                 alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural
-                                </p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card h-100">
-                        <a href="/detail" class="list-link">
-                            <img src="https://t1.daumcdn.net/cfile/tistory/997297335A24FD401B" class="card-img-top"
-                                 alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural
-                                </p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card h-100">
-                        <a href="/detail" class="list-link">
-                            <img src="https://2.gall-img.com/hygall/files/attach/images/82/728/080/307/34027a4a97ee5db5894440ecf3eb4862.jpg"
-                                 class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural
-                                </p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card h-100">
-                        <a href="/detail" class="list-link">
-                            <img src="https://2.gall-img.com/hygall/files/attach/images/82/728/080/307/34027a4a97ee5db5894440ecf3eb4862.jpg"
-                                 class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural
-                                </p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
+            <div class="row row-cols-1 row-cols-md-4 g-4" id="matjip-list">
+
             </div>
         </div>
     </div>
