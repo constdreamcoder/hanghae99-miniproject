@@ -13,23 +13,6 @@
 
 </head>
 <body>
-    <!-- Navbar
-    <section id="navbar">
-        <div class="navbar__logo">
-            <span>LOGO</span>
-        </div>
-        <div class="navbar__menu">
-            <ul>
-                <li class="navbar__menu__item">
-                    About
-                </li>
-                <li class="navbar__menu__item">
-                    Contact
-                </li>
-                <i class="far fa-user"></i>
-            </ul>
-        </div>
-    </section> -->
     <header class="wrap">
         <div class="common-inner header-inner">
             <h1 class='logo' onclick="window.location.href = '/'">Local Michelin</h1>
@@ -46,56 +29,62 @@
 
     <!-- Login/Signup Form -->
     <div class="content-wrap ">
-    <section class="wrapper">
-        <div class="wrapper-inside">
-            <div class="title">
-                <div class="title-login">Login</div>
-                <div class="title-signup">Signup</div>
-            </div>
-            <div class="form-container">
-                <div class="slide-controls edge-round">
-                    <input type="radio" name="slide" id="login" checked/>
-                    <input type="radio" name="slide" id="signup"/>
-                    <label for="login" class="slide login">Login</label>
-                    <label for="signup" class="slide signup">Signup</label>
-                    <div class="slider-tab edge-round"></div>
+        <section class="wrapper">
+            <div class="wrapper-inside">
+                <div class="title">
+                    <div class="title-login">Login</div>
+                    <div class="title-signup">Signup</div>
                 </div>
+                <div class="form-container">
+                    <div class="slide-controls edge-round">
+                        <input type="radio" name="slide" id="login" checked/>
+                        <input type="radio" name="slide" id="signup"/>
+                        <label for="login" class="slide login">Login</label>
+                        <label for="signup" class="slide signup">Signup</label>
+                        <div class="slider-tab edge-round"></div>
+                    </div>
 
-                <div class="form-inner">
+
                     <!-- Login Form -->
-                    <div class="login-container">
-                        <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                            <label for="floatingInput">Email address</label>
+                    <div class="form-inner">
+                        <div class="login-container">
+                            <div class="form-floating mb-3">
+                                <input type="email" class="form-control" id="floatingInput"
+                                       placeholder="name@example.com">
+                                <label for="floatingInput">Email address</label>
+                            </div>
+                            <div class="form-floating">
+                                <input type="password" class="form-control" id="floatingPassword"
+                                       placeholder="Password">
+                                <label for="floatingPassword">Password</label>
+                            </div>
+                            <button class="login-btn">Login</button>
                         </div>
-                        <div class="form-floating">
-                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                            <label for="floatingPassword">Password</label>
+
+                        <!-- Signup Form -->
+                        <div class="signup-container">
+                            <div class="form-floating mb-3">
+                                <input type="email" class="form-control" id="floatingInput"
+                                       placeholder="name@example.com">
+                                <label for="floatingInput">Email address</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="email" class="form-control" id="floatingInput"
+                                       placeholder="name@example.com">
+                                <label for="floatingInput">Email address</label>
+                            </div>
+                            <div class="form-floating">
+                                <input type="password" class="form-control" id="floatingPassword"
+                                       placeholder="Password">
+                                <label for="floatingPassword">Password</label>
+                            </div>
+                            <button class="login-btn">Signup</button>
                         </div>
-                        <button class="login-btn">Login</button>
                     </div>
 
-                    <!-- Signup Form -->
-                    <div class="signup-container">
-                        <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                            <label for="floatingInput">Email address</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                            <label for="floatingInput">Email address</label>
-                        </div>
-                        <div class="form-floating">
-                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                            <label for="floatingPassword">Password</label>
-                        </div>
-                        <button class="login-btn">Signup</button>
-                    </div>
                 </div>
-
             </div>
-        </div>
-    </section>
+        </section>
     </div>
     <footer class="wrap">
         <div class="common-inner footer-inner">
