@@ -13,8 +13,8 @@ app.config['UPLOAD_FOLDER'] = "./static/profile_pics"
 
 SECRET_KEY = 'SPARTA'
 
-client = MongoClient('mongodb+srv://test:sparta@cluster0.j8lzb.mongodb.net/Cluster0?retryWrites=true&w=majority')
-db = client.account
+client = MongoClient('mongodb+srv://test:sparta@cluster0.xo7xh.mongodb.net/Cluster0?retryWrites=true&w=majority')
+db = client.dbsparta
 
 @app.route('/')
 def home():
@@ -40,7 +40,7 @@ def sign_in():
     password_receive = request.form['password_give']
 
     pw_hash = hashlib.sha256(password_receive.encode('utf-8')).hexdigest()
-    result = db.users.find_one({'username': username_receive, 'password': pw_hash})
+    result = db.accounts.find_one({'username': username_receive, 'password': pw_hash})
 
     if result is not None:
         payload = {
@@ -62,7 +62,7 @@ def sign_up():
         "username": username_receive,                               # 아이디
         "password": password_hash,                                  # 비밀번호
     }
-    db.users.insert_one(doc)
+    db.accounts.insert_one(doc)
     return jsonify({'result': 'success'})
 
 @app.route('/sign_up/check_dup', methods=['POST'])
@@ -70,7 +70,7 @@ def check_dup():
     # 아이디 중복확인
     username_receive = request.form['username_give']
     # 같은 아이다가 데이터베이스에 존재한다면 true, 아니면 false
-    exists = bool(db.users.find_one({"username": username_receive}))
+    exists = bool(db.accounts.find_one({"username": username_receive}))
     return jsonify({'result': 'success', 'exists': exists})
 
 @app.route('/post')
