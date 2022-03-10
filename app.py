@@ -85,6 +85,10 @@ def post():
 def detail():
     return render_template('detail.html')
 
+@app.route('/restaurantslist')
+def restaurantslist():
+    return render_template('restaurantslist.html')
+
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
