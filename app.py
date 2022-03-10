@@ -176,20 +176,22 @@ def get_detail(keyword):
     matjip = db.matjip.find_one({'store_name' : keyword})
     return render_template("detail.html", matjip=matjip)
 
-@app.route('/detail/<keyword>', methods=['POST'])
-def comment_post(keyword):
-    comment_receive = request.form['comment_give']
-
-    doc = {"comment": comment_receive,
-           "store_name":keyword
-           }
-    db.comment.insert_one(doc)
-    return jsonify({'result': 'success', 'msg': '댓글 저장 완료'})
+# 댓글은 추후 업데이트 예정
+# @app.route('/detail/<keyword>', methods=['POST'])
+# def comment_post(keyword):
+#     comment_receive = request.form['comment_give']
+#
+#     doc = {"comment": comment_receive,
+#            "store_name":keyword
+#            }
+#     db.comment.insert_one(doc)
+#     return jsonify({'result': 'success', 'msg': '댓글 저장 완료'})
 
 @app.route('/restaurantslist')
 def restaurantslist():
-    return render_template('restaurantslist.html')
-
+    matjip_list = list(db.matjip.find({}, {'_id': False}))
+    d_today = datetime.date.today();
+    return render_template('restaurantslist.html', matjiplist=matjip_list, current_time=d_today)
 
 
 if __name__ == '__main__':
