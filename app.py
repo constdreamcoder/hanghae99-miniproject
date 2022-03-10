@@ -2,20 +2,14 @@ from flask import Flask, render_template, request, jsonify, redirect, url_for
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from time import sleep
-import requests
-
-app = Flask(__name__)
-
+from datetime import datetime, timedelta
+from werkzeug.utils import secure_filename
 from pymongo import MongoClient
-
-
 import jwt
 import datetime
 import hashlib
 import certifi
-from flask import Flask, render_template, jsonify, request, redirect, url_for
-from werkzeug.utils import secure_filename
-from datetime import datetime, timedelta
+import requests
 
 app = Flask(__name__)
 
@@ -50,7 +44,6 @@ def home():
 def login():
     msg = request.args.get("msg")
     return render_template('loginForm.html', msg=msg)
-
 
 
 @app.route('/sign_in', methods=['POST'])
@@ -108,7 +101,6 @@ def post_matjip():
     description_receive = request.form["description_give"]
 
 
-
     driver = webdriver.Chrome('./chromedriver')
     driver.get(url_link_receive)
     sleep(3)
@@ -155,7 +147,6 @@ def post_matjip():
                 x = float(response["addresses"][0]["x"])
                 y = float(response["addresses"][0]["y"])
 
-
     matjip_list = list(db.matjip.find({}, {'_id': False}))
     count = len(matjip_list) + 1
 
@@ -175,12 +166,6 @@ def post_matjip():
     db.matjip.insert_one(doc)
     return jsonify({'result': 'success', 'msg': '등록 완료!'})
 
-# @app.route("/matjip", methods=["GET"])
-# def get_matgip():
-#     matjip_list = list(db.matjip.find({},{"_id": False}))
-#     return jsonify({'matjip_list': matjip_list})
-
-
 @app.route('/detail')
 def detail():
     return render_template('detail.html')
@@ -188,11 +173,7 @@ def detail():
 
 @app.route('/detail/<keyword>')
 def get_detail(keyword):
-
-
-
     matjip = db.matjip.find_one({'store_name' : keyword})
-    print(matjip)
     return render_template("detail.html", matjip=matjip)
 
 @app.route('/detail/<keyword>', methods=['POST'])
