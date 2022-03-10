@@ -5,11 +5,216 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login/Signup Page</title>
-    <!--        <link rel="stylesheet" href="../static/css/navbar.css" />-->
-    <link rel="stylesheet" href="../static/css/login.css"/>
+     <!-- Bulma CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <!--  Bootstrap 5.0  -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!--  CSS  -->
     <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/login.css"/>
+    <!-- Google Font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Stylish&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <script src="https://kit.fontawesome.com/f19e4e7f1b.js" crossorigin="anonymous"></script>
+    <!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+
+    <style>
+        .help {
+            color: gray;
+            height: 30px;
+            margin-top: 0px;
+        }
+
+        .help-warning {
+            margin: 0px;
+        }
+
+        .field {
+            margin: 0px;
+        }
+
+        p {
+            margin: 0px;
+        }
+
+        .field:not(:last-child) {
+            margin-bottom: 0rem;
+        }
+
+        #help-signup-msg,
+        #help-signup-password {
+            height: 37px;
+        }
+
+        #help-sign-password2 {
+            height: 20px;
+        }
+    </style>
+    <script>
+        function sign_in() {
+            let username = $("#input-username").val()
+            let password = $("#input-password").val()
+
+            // 아이디, 패스워드 빈칸 여부 확인
+            if (username == "") {
+                $("#help-id-login").text("아이디를 입력해주세요.")
+                $("#input-username").focus()
+                return;
+            } else {
+                $("#help-id-login").text("")
+            }
+
+            if (password == "") {
+                $("#help-password-login").text("비밀번호를 입력해주세요.")
+                $("#input-password").focus()
+                return;
+            } else {
+                $("#help-password-login").text("")
+            }
+            $.ajax({
+                type: "POST",
+                url: "/sign_in",
+                data: {
+                    username_give: username,
+                    password_give: password
+                },
+                success: function (response) {
+                    if (response['result'] == 'success') {
+                        $.cookie('mytoken', response['token'], {path: '/'});
+                        window.location.replace("/")
+                    } else {
+                        alert(response['msg'])
+                    }
+                }
+            });
+        }
+
+        function sign_up() {
+            let username = $("#input-signup-username").val()
+            let password = $("#input-signup-password").val()
+            let password2 = $("#input-signup-password2").val()
+            console.log(username, password, password2)
+
+            // 아이디 중복 확인 수행 여부 확인 - help란에 is-success 클래스를 가지고 있는지 여부로 판단
+            if ($("#help-signup-msg").hasClass("is-danger")) {
+                alert("아이디를 다시 확인해주세요.")
+                return;
+            } else if (!$("#help-signup-msg").hasClass("is-success")) {
+                alert("아이디 중복확인을 해주세요.")
+                return;
+            }
+
+            // 비밀번호 확인
+            // 비밀번호 입력란이 빈칸일 때
+            if (password == "") {
+                $("#help-signup-password").text("비밀번호를 입력해주세요.").removeClass("is-safe").addClass("is-danger")
+                $("#input-signup-password").focus()
+                return;
+            // 비밀번호가 해당 정규식 규칙에 맞추어 작성되었는지 여부 확인
+            } else if (!is_password(password)) {
+                $("#help-signup-password").text("비밀번호의 형식을 확인해주세요. 영문과 숫자 필수 포함, 특수문자(!@#$%^&*) 사용가능 8-20자").removeClass("is-safe").addClass("is-danger help-warning ")
+                $("#input-signup-password").focus()
+                return
+            } else {
+                $("#help-signup-password").text("사용할 수 있는 비밀번호입니다.").removeClass("is-danger").addClass("is-success")
+            }
+            // 비밀번호 확인 입력란이 빈칸일 때
+            if (password2 == "") {
+                $("#help-sign-password2").text("비밀번호를 입력해주세요.").removeClass("is-safe").addClass("is-danger")
+                $("#input-signup-password2").focus()
+                return;
+            // 동일한 비밀번호를 입력했는지 확인
+            } else if (password2 != password) {
+                $("#help-sign-password2").text("비밀번호가 일치하지 않습니다.").removeClass("is-safe").addClass("is-danger")
+                $("#input-signup-password2").focus()
+                return;
+            } else {
+                $("#help-sign-password2").text("비밀번호가 일치합니다.").removeClass("is-danger").addClass("is-success")
+            }
+            $.ajax({
+                type: "POST",
+                url: "/sign_up/save",
+                data: {
+                    username_give: username,
+                    password_give: password
+                },
+                success: function (response) {
+                    alert("회원가입을 축하드립니다!")
+                    window.location.replace("/login")
+                }
+            });
+
+        }
+
+        // 각 버튼의 toggle 기능
+        function toggle_sign_up() {
+            $("#sign-up-box").toggleClass("is-hidden")
+            $("#div-sign-in-or-up").toggleClass("is-hidden")
+            $("#btn-check-dup").toggleClass("is-hidden")
+            $("#help-id").toggleClass("is-hidden")
+            $("#help-password").toggleClass("is-hidden")
+            $("#help-password2").toggleClass("is-hidden")
+        }
+
+        // 아이디 정규표현식
+        function is_nickname(asValue) {
+            var regExp = /^(?=.*[a-zA-Z])[-a-zA-Z0-9_.]{2,10}$/;
+            return regExp.test(asValue);
+        }
+
+        // 비밀번호 정규표현식
+        function is_password(asValue) {
+            var regExp = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z!@#$%^&*]{8,20}$/;
+            return regExp.test(asValue);
+        }
+
+        // 아이디 중복 확인 함수
+       function check_dup() {
+            let username = $("#input-signup-username").val()
+            console.log(username)
+           // 입력값이 없을 때
+            if (username == "") {
+                $("#help-signup-msg").text("아이디를 입력해주세요.").removeClass("is-safe").addClass("is-danger")
+                $("#input-signup-username").focus()
+                return;
+            }
+            // 입력한 아이디 형식을 검사
+            if (!is_nickname(username)) {
+                $("#help-signup-msg").text("아이디의 형식을 확인해주세요. 영문과 숫자, 일부 특수문자(._-) 사용 가능. 2-10자 길이").removeClass("is-safe").addClass("is-danger")
+                $("#input-signup-username").focus()
+                return;
+            }
+            $("#help-signup-msg").addClass("is-loading")
+           // 아이디 형식 확인 후 데이터베이스에서 같은 아이디 중복 검사
+            $.ajax({
+                type: "POST",
+                url: "/sign_up/check_dup",
+                data: {
+                    username_give: username
+                },
+                success: function (response) {
+
+                    if (response["exists"]) {
+                        $("#help-signup-msg").text("이미 존재하는 아이디입니다.").removeClass("is-safe").addClass("is-danger")
+                        $("#input-signup-username").focus()
+                    } else {
+                        // is-success 라는 class는 아이디 중복확인을 사용자가 눌렀는지 확인하는용으로 사용
+                        // 아이디 중복확인 완료시 - is-success 클래스 추가
+                        // 아이디 중복확인 완료시 - is-success 클래스가 추가되지 않음
+                        $("#help-signup-msg").text("사용할 수 있는 아이디입니다.").removeClass("is-danger").addClass("is-success")
+                    }
+                    $("#help-signup-msg").removeClass("is-loading")
+
+                }
+            });
+        }
+
+    </script>
 
 </head>
 <body>
@@ -32,8 +237,10 @@
         <section class="wrapper">
             <div class="wrapper-inside">
                 <div class="title">
-                    <div class="title-login">Login</div>
-                    <div class="title-signup">Signup</div>
+                    <div class="title-login">
+                        <i class="fa-solid fa-circle-user fa-2x title__user"></i>
+                    </div>
+                    <div class="title-signup">welcome!</div>
                 </div>
                 <div class="form-container">
                     <div class="slide-controls edge-round">
@@ -43,45 +250,71 @@
                         <label for="signup" class="slide signup">Signup</label>
                         <div class="slider-tab edge-round"></div>
                     </div>
-
-
-                    <!-- Login Form -->
+                    
                     <div class="form-inner">
+                        <!-- Login Form -->
                         <div class="login-container">
-                            <div class="form-floating mb-3">
-                                <input type="email" class="form-control" id="floatingInput"
-                                       placeholder="name@example.com">
-                                <label for="floatingInput">Email address</label>
+                            <div class="login-container__inside">
+                                <!-- 로그인 아아디 입력 -->
+                                <div class="field">
+                                    <div class="control has-icons-left" style="width:100%">
+                                        <input id="input-username" class="input is-medium" type="text"placeholder="아이디">
+                                        <span class="icon is-small is-left"><i class="fa fa-user"></i></span>
+                                    </div>
+                                </div>
+                                <p id="help-id-login" class="help is-danger"></p>
+                                 <!-- 로그인 비밀번호 입력 -->
+                                <div class="field">
+                                    <div class="control has-icons-left">
+                                        <input id="input-password" class="input is-medium" type="password" placeholder="비밀번호">
+                                        <span class="icon is-small is-left"><i class="fa fa-lock"></i></span>
+                                    </div>
+                                </div>
+                                <p id="help-password-login" class="help is-danger"></p>
                             </div>
-                            <div class="form-floating">
-                                <input type="password" class="form-control" id="floatingPassword"
-                                       placeholder="Password">
-                                <label for="floatingPassword">Password</label>
+                            <div>
+                                <!-- 로그인 버튼 -->
+                                <button class="login-btn" onclick="sign_in()">Login</button>
                             </div>
-                            <button class="login-btn">Login</button>
                         </div>
 
-                        <!-- Signup Form -->
+                        <!--  Signup Form -->
                         <div class="signup-container">
-                            <div class="form-floating mb-3">
-                                <input type="email" class="form-control" id="floatingInput"
-                                       placeholder="name@example.com">
-                                <label for="floatingInput">Email address</label>
+                             <!-- 회원가입 아아디 입력 -->
+                            <div class="field has-addons">
+                                <div class="control has-icons-left" style="width:100%">
+                                    <input id="input-signup-username" class="input" type="text"placeholder="아이디">
+                                    <span class="icon is-small is-left"><i class="fa fa-user"></i></span>
+                                </div>
+                                <!-- 아이다 중복 확인 -->
+                                <div id="btn-check-dup" class="control">
+                                    <button class="button is-dark" onclick="check_dup()">중복확인</button>
+                                </div>
                             </div>
-                            <div class="form-floating mb-3">
-                                <input type="email" class="form-control" id="floatingInput"
-                                       placeholder="name@example.com">
-                                <label for="floatingInput">Email address</label>
+                            <!-- 아이디 적합성 여부 검사 메시지 창-->
+                            <p id="help-signup-msg" class="help">2-10자의 영문,숫자, 특수문자(._-)만 입력 가능</p>
+                            <!-- 회원가입 비밀번호 입력 -->
+                            <div class="field">
+                                <div class="control has-icons-left">
+                                    <input id="input-signup-password" class="input" type="password" placeholder="비밀번호">
+                                    <span class="icon is-small is-left"><i class="fa fa-lock"></i></span>
+                                </div>
                             </div>
-                            <div class="form-floating">
-                                <input type="password" class="form-control" id="floatingPassword"
-                                       placeholder="Password">
-                                <label for="floatingPassword">Password</label>
+                            <!-- 비밀번호 적합성 여부 검사 메시지 창  -->
+                            <p id="help-signup-password" class="help">8~20자/영문, 숫자, 특수문자(!@#$%^&*) 가능 </p>
+                            <!-- 비밀번호 재입력 -->
+                            <div class="field">
+                                <div class="control has-icons-left" style="width:100%">
+                                    <input id="input-signup-password2" class="input" type="password"
+                                           placeholder="비밀번호 재입력">
+                                    <span class="icon is-small is-left"><i class="fa fa-lock"></i></span>
+                                </div>
                             </div>
-                            <button class="login-btn">Signup</button>
+                            <p id="help-sign-password2" class="help">비밀번호를 다시 한 번 입력해주세요.</p>
+                            <!-- 화원가입 버튼 -->
+                            <button class="login-btn" onclick="sign_up()">Signup</button>
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>
@@ -92,7 +325,6 @@
         </div>
     </footer>
 
-    <script src="https://kit.fontawesome.com/4f352d7f5e.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="../static/js/loginCSS.js"></script>
 </body>
 </html>

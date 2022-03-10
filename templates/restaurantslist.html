@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;0,800;1,500;1,700&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/restaurantslist.css">
+    <title>인기맛집 리스트</title>
+    <style>
+        /*  list style  */
+        .content-wrap {
+            margin: 85px auto;
+            /*background: rgba(183, 25, 25, 0.49);*/
+            text-align: center;
+        }
+
+        .content-inner {
+            position: relative;
+        }
+
+        .content-inner > span {
+            position: absolute;
+            right: 10px;
+            top: 30px;
+        }
+
+        .content-title {
+            font-weight: 700;
+            font-size: 26px;
+            font-family: 'Noto Serif KR';
+            margin-bottom: 50px;
+        }
+
+        .list-link > img {
+            width: 100%;
+            /*height: 200px;*/
+        }
+    </style>
+</head>
+<body>
+<header class="wrap">
+    <div class="common-inner header-inner">
+        <h1 class='logo' onclick="window.location.href = '/'">Local Michelin</h1>
+        <ul class="nav-bar">
+            <li class="nav-item">
+                <a href="/login" class="btn btn-link">Login</a>
+            </li>
+            <li class="nav-item">
+                <a href="/login" class="btn btn-link">Sign Up</a>
+            </li>
+        </ul>
+    </div>
+</header>
+
+<div class="wrap main-wrap">
+    <div class="common-inner content-wrap">
+        <div class="content-inner">
+            <p class="content-title">인기 맛집</p>
+            <div class="cards-wrapper">
+                <div class="card-grid-space">
+                    <a class="card" href="/detail" style="--bg-img: url('https://2.gall-img.com/hygall/files/attach/images/82/728/080/307/34027a4a97ee5db5894440ecf3eb4862.jpg')">
+                        <div>
+                            <h2>HTML Syntax</h2>
+                            <p>The syntax of a language is how it works. How to actually write it. Learn HTML syntax…</p>
+                            <div class="date">6 Oct 2017</div>
+                            <div class="tags">
+                                <div class="tag">HTML</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="card-grid-space">
+                    <a class="card" href="/detail" style="--bg-img: url('https://pbs.twimg.com/media/ElGH6xZUUAAITVA?format=jpg&name=large')">
+                        <div>
+                            <h2>HTML Syntax</h2>
+                            <p>The syntax of a language is how it works. How to actually write it. Learn HTML syntax…</p>
+                            <div class="date">6 Oct 2017</div>
+                            <div class="tags">
+                                <div class="tag">HTML</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="card-grid-space">
+                    <a class="card" href="/detail" style="--bg-img: url('https://t1.daumcdn.net/cfile/tistory/997297335A24FD401B')">
+                        <div>
+                            <h2>HTML Syntax</h2>
+                            <p>The syntax of a language is how it works. How to actually write it. Learn HTML syntax…</p>
+                            <div class="date">6 Oct 2017</div>
+                            <div class="tags">
+                                <div class="tag">HTML</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="card-grid-space">
+                    <a class="card" href="/detail" style="--bg-img: url('https://mp-seoul-image-production-s3.mangoplate.com/1723486_1604913545178474.jpg?fit=around|738:738&crop=738:738;*,*&output-format=jpg&output-quality=80')">
+                        <div>
+                            <h2>HTML Syntax</h2>
+                            <p>The syntax of a language is how it works. How to actually write it. Learn HTML syntax…</p>
+                            <div class="date">6 Oct 2017</div>
+                            <div class="tags">
+                                <div class="tag">HTML</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="card-grid-space">
+                    <a class="card" href="/detail" style="--bg-img: url('https://t1.daumcdn.net/cfile/tistory/997297335A24FD401B')">
+                        <div>
+                            <h2>HTML Syntax</h2>
+                            <p>The syntax of a language is how it works. How to actually write it. Learn HTML syntax…</p>
+                            <div class="date">6 Oct 2017</div>
+                            <div class="tags">
+                                <div class="tag">HTML</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="card-grid-space">
+                    <a class="card" href="/detail" style="--bg-img: url('https://t1.daumcdn.net/cfile/tistory/997297335A24FD401B')">
+                        <div>
+                            <h2>HTML Syntax</h2>
+                            <p>The syntax of a language is how it works. How to actually write it. Learn HTML syntax…</p>
+                            <div class="date">6 Oct 2017</div>
+                            <div class="tags">
+                                <div class="tag">HTML</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="card-grid-space">
+                    <a class="card" href="/detail" style="--bg-img: url('https://2.gall-img.com/hygall/files/attach/images/82/728/080/307/34027a4a97ee5db5894440ecf3eb4862.jpg')">
+                        <div>
+                            <h2>HTML Syntax</h2>
+                            <p>The syntax of a language is how it works. How to actually write it. Learn HTML syntax…</p>
+                            <div class="date">6 Oct 2017</div>
+                            <div class="tags">
+                                <div class="tag">HTML</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="card-grid-space">
+                    <a class="card" href="/detail" style="--bg-img: url('https://2.gall-img.com/hygall/files/attach/images/82/728/080/307/34027a4a97ee5db5894440ecf3eb4862.jpg')">
+                        <div>
+                            <h2>HTML Syntax</h2>
+                            <p>The syntax of a language is how it works. How to actually write it. Learn HTML syntax…</p>
+                            <div class="date">6 Oct 2017</div>
+                            <div class="tags">
+                                <div class="tag">HTML</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="wrap">
+    <div class="common-inner footer-inner">
+        <p class="footer-txt">© 2022 mini-project</p>
+    </div>
+</footer>
+</body>
+</html>
