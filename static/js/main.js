@@ -13,6 +13,11 @@ storeBtnContainer.addEventListener('click', (e) => {
         return;
     }
 
+    // 클릭을 했을시 기존에 selected를 풀어 주고 이벤트가 발생한 곳에 selected를 부여한다.
+    const active = document.querySelector('.category_btn.selected');
+    active.classList.remove('selected');
+    e.target.classList.add('selected')
+
     // 가게의 item을 반복문 시켜 지역 버튼과 data 값이 같은지 확인한다.
     detailItems.forEach((item) => {
         //
