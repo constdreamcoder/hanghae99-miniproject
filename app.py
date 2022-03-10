@@ -36,11 +36,11 @@ def post_matjip():
 
     driver = webdriver.Chrome('./chromedriver')
     driver.get(url_link_receive)
-    sleep(5)
+    sleep(3)
     element = driver.find_element_by_id("entryIframe")  # iframe 태그 엘리먼트 찾기
     driver.switch_to.frame(element)  # 프레임 이동
 
-    sleep(2)
+
     req = driver.page_source
     soup = BeautifulSoup(req, 'html.parser')
 
@@ -67,6 +67,20 @@ def post_matjip():
     for image in images:
         src = image['src']
 
+        headers = {
+            "X-NCP-APIGW-API-KEY-ID": "d2ekfousjn",
+            "X-NCP-APIGW-API-KEY": "Dr2VTkWjpX8cwYs9eLrm5hh4vkjYjRCYEXmPxQLX"
+        }
+        r = requests.get(f"https://naveropenapi.apigw.ntruss.com/map-geocode/v2/geocode?query={adress}",
+                         headers=headers)
+        response = r.json()
+
+        if response["status"] == "OK":
+            if len(response["addresses"]) > 0:
+                x = float(response["addresses"][0]["x"])
+                y = float(response["addresses"][0]["y"])
+
+
     matjip_list = list(db.matjip.find({}, {'_id': False}))
     count = len(matjip_list) + 1
 
@@ -79,7 +93,9 @@ def post_matjip():
         "adress": adress,
         "opentime": opentime,
         "src": src,
-        "num": count
+        "num": count,
+        "mapx": x,
+        "mapy": y
     }
     db.matjip.insert_one(doc)
     return jsonify({'result': 'success', 'msg': '등록 완료!'})

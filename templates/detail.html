@@ -8,6 +8,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script type="text/javascript"
+                src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=d2ekfousjn&submodules=geocoder"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
@@ -75,7 +77,7 @@
             margin-bottom: 100px;
             overflow: hidden;
 
-            background: #d2b7b7;
+            {#background: #d2b7b7;#}
 
             border-radius: 10px;
         }
@@ -140,8 +142,36 @@
         .btn-dark {
             margin-right: 14px;
         }
+        .map {
+                width: 100%;
+                height: 50vh;
+                margin: 20px auto 20px auto;
+            }
     </style>
     <script>
+
+            let map;
+            let y = {{ matjip.mapy }};
+            let x = {{ matjip.mapx }};
+
+
+            $(document).ready(function () {
+                map = new naver.maps.Map('map', {
+                    center: new naver.maps.LatLng(y, x),
+                    zoom: 12,
+                    zoomControl: true,
+                    zoomControlOptions: {
+                        style: naver.maps.ZoomControlStyle.SMALL,
+                        position: naver.maps.Position.TOP_RIGHT
+                    }
+
+                });
+                let marker = new naver.maps.Marker({
+                    position: new naver.maps.LatLng(y,x),
+                    map: map
+                });
+
+            })
 
         function comment_save() {
         let comment = $('#new_comment').val();
@@ -238,7 +268,7 @@
 <div class="wrap main-wrap">
     <div class="common-inner content-inner" >
         <div id="matjip-detail">
-{#            {% for matjip in matjips %}#}
+
             <p class="detail-title">{{ matjip.store_name }} <span class="detail-sub-title">{{ matjip.store_name }}</span></p>
             <div class="detail-top">
                 <img src="{{ matjip.src }}"
@@ -253,12 +283,13 @@
             </div>
 
             <div class="store-map-part">
-                <p class="store-addr"><span class="store-addr-icon">📍</span>{{ matjip.adress }}</p>
-                <div class="store-map">
+                <p class="store-addr" onclick="click2center()"><span class="store-addr-icon">📍</span>{{ matjip.adress }}</p>
+                <div class="map" id="map" >
                     <!--        Api 사용해서 나타낼곳        -->
+
                 </div>
             </div>
-{#            {% endfor %}#}
+
         </div>
 
 
