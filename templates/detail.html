@@ -142,8 +142,27 @@
         }
     </style>
     <script>
-        $(document).ready(function () {
-            show_detail();
+
+        function comment_save() {
+        let comment = $('#new_comment').val();
+
+                console.log(comment)
+                $.ajax({
+                    type: "POST",
+                    url: `/detail`,
+                    data: {
+                        comment_give: comment
+                    },
+                    success: function (response) {
+                        alert(response["msg"])
+                        window.location.href = "/"
+                    }
+                });
+    }
+
+
+    $(document).ready(function () {
+            //show_detail();
         });
 
         function show_detail() {
@@ -186,8 +205,16 @@
                                                 </div>
                                             </div>`
                              $('#matjip-detail').append(temp_html)
+
+
+
+
+
+
+            }
+
                     }
-                }
+
             });
         }
     </script>
@@ -211,8 +238,27 @@
 <div class="wrap main-wrap">
     <div class="common-inner content-inner" >
         <div id="matjip-detail">
+{#            {% for matjip in matjips %}#}
+            <p class="detail-title">{{ matjip.store_name }} <span class="detail-sub-title">{{ matjip.store_name }}</span></p>
+            <div class="detail-top">
+                <img src="{{ matjip.src }}"
+                     class="card-img-top" alt="{{ matjip.num }}">
+                <p class="store-num">Call : <span class="store-num number">{{ matjip.callnum }}</span></p>
+                <p class="store-time">{{ matjip.opentime }}</p>
+            </div>
 
+            <div class="store-decs">
+                <p class="desc-title">📋 소개</p>
+                <p class="desc-txt">{{ matjip.description }}</p>
+            </div>
 
+            <div class="store-map-part">
+                <p class="store-addr"><span class="store-addr-icon">📍</span>{{ matjip.adress }}</p>
+                <div class="store-map">
+                    <!--        Api 사용해서 나타낼곳        -->
+                </div>
+            </div>
+{#            {% endfor %}#}
         </div>
 
 
@@ -255,10 +301,10 @@
 
         <div class="mb-3 comment-write">
             <label for="description" class="form-label write-title">reviw write</label>
-            <textarea class="form-control" id="description" rows="3"></textarea>
+            <textarea class="form-control" id="new_comment" rows="3"></textarea>
             <div class="btn write-btn">
-                <button type="button" class="btn btn-dark">등록</button>
-                <button type="button" class="btn btn-light">취소</button>
+                <button type="button" class="btn btn-dark" onclick="comment_save()">등록</button>
+                <button type="button" class="btn btn-light" onclick="window.location.href = '/'">취소</button>
             </div>
         </div>
 

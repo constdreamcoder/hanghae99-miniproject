@@ -12,8 +12,8 @@ db = client.dbsparta
 
 @app.route('/')
 def home():
-
-    return render_template('index.html')
+    matjips = list(db.matjip.find({}, {"_id": False}))
+    return render_template('index.html', matjips=matjips)
 
 @app.route('/login')
 def login():
@@ -84,22 +84,34 @@ def post_matjip():
     db.matjip.insert_one(doc)
     return jsonify({'result': 'success', 'msg': '등록 완료!'})
 
-@app.route("/matjip", methods=["GET"])
-def get_matgip():
-    matjip_list = list(db.matjip.find({},{"_id": False}))
-    return jsonify({'matjip_list': matjip_list})
+# @app.route("/matjip", methods=["GET"])
+# def get_matgip():
+#     matjip_list = list(db.matjip.find({},{"_id": False}))
+#     return jsonify({'matjip_list': matjip_list})
 
 
 @app.route('/detail')
 def detail():
     return render_template('detail.html')
 
-@app.route('/detail/<keyword>', methods=["GET"])
+@app.route('/detail/<keyword>')
 def get_detail(keyword):
-    matjip_list = list(db.matjip.find({}, {'_id': False}))
-    return jsonify({'matjip_list': matjip_list})
 
 
+
+    matjip = db.matjip.find_one({'store_name' : keyword})
+    print(matjip)
+    return render_template("detail.html", matjip=matjip)
+
+@app.route('/detail/<keyword>', methods=['POST'])
+def comment_post(keyword):
+    comment_receive = request.form['comment_give']
+
+    doc = {"comment": comment_receive,
+           "store_name":keyword
+           }
+    db.comment.insert_one(doc)
+    return jsonify({'result': 'success', 'msg': '댓글 저장 완료'})
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)

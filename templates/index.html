@@ -50,8 +50,18 @@
         }
     </style>
     <script>
+        let matjips = {{ matjips|tojson }};
+            let matjip_list = [];
+            for (let i=0; i<matjips.length; i++){
+                matjip_list.push(matjips[i]["store_name"])
+                matjip_list.push(matjips[i]["description"])
+                matjip_list.push(matjips[i]["src"])
+                matjip_list.push(matjips[i]["num"])
+            }
+            console.log(matjip_list)
+
         $(document).ready(function () {
-            show_matjip();
+           // show_matjip();
         });
 
         function show_matjip() {
@@ -123,7 +133,21 @@
             <p class="content-title">인기 맛집</p>
             <span><a href="#" class="btn-link">전체보기</a></span>
             <div class="row row-cols-1 row-cols-md-4 g-4" id="matjip-list">
-
+                {% for matjip in matjips %}
+                <div class="col">
+                    <div class="card h-100">
+                        <a href="/detail/{{ matjip.store_name }}" class="list-link">
+                            <img src="{{ matjip.src }}"
+                                 class="card-img-top" alt="{{ matjip.num }}">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ matjip.store_name }}</h5>
+                                <p class="card-text">{{ matjip.description }}
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
             </div>
         </div>
     </div>
