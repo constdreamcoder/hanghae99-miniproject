@@ -11,7 +11,7 @@ https://alef-yud.tistory.com/65
 (완성 후 업로드 예정)
 
 ## 데모영상
-(완성 후 업로드 예정)
+https://www.youtube.com/watch?v=UjxDVoTDPBY
 
 ## 기술 스택
 `Front-end`
