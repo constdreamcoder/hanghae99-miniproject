@@ -27,3 +27,18 @@ storeBtnContainer.addEventListener('click', (e) => {
     })
 })
 
+// arrow up btn 찾아주기
+const arrowUp = document.querySelector('.arrow-up')
+
+// btn 누르면 scrollTo 함수를 실행시켜 header로 이동
+arrowUp.addEventListener('click', () => {
+  scrollTo('#header');
+})
+
+// selector를 한곳으로 이동하게 만들어주는 function.
+function scrollTo(selector) {
+  const scrollTo = document.querySelector(selector)
+  scrollTo.scrollIntoView({
+    behavior: "smooth"
+  });
+}
