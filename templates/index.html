@@ -59,7 +59,7 @@
             border: 1px solid #bdbdbd;
             border-radius: 5px;
             font-size: 18px;
-            padding: 8px 48px;
+            padding: 8px 20px;
             margin-right: 10px;
             margin-bottom: 15px;
             position: relative;
@@ -73,6 +73,10 @@
 
         .detail-item.invisible {
             display: none;
+        }
+
+        .card {
+            box-shadow: 0 0 5px 2px #d9d9d9;
         }
 
         .list-link > img {
@@ -111,46 +115,42 @@
                 matjip_list.push(matjips[i]['location'])
             }
 
-        $(document).ready(function () {
-           // show_matjip();
-        });
-
-        function show_matjip() {
-
-
-
-
-            $.ajax({
-                type: "GET",
-                url: "/matjip",
-                data: {},
-                success: function (response) {
-                    let rows = response['matjip_list']
-                    console.log(rows)
-                    for (let i = 0; i < rows.length; i++) {
-                        let store_name = rows[i]['store_name']
-                        let description = rows[i]['description']
-                        let src = rows[i]['src']
-                        let num = rows[i]['num']
-
-                        let temp_html = `<div class="col">
-                                                <div class="card h-100">
-                                                    <a href="/detail" class="list-link" >
-                                                        <img src="${src}"
-                                                             class="card-img-top" alt="${num}" >
-                                                        <div class="card-body">
-                                                            <h5 class="card-title">${store_name}</h5>
-                                                            <p class="card-text">${description}
-                                                            </p>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>`
-                        $('#matjip-list').append(temp_html)
-                    }
-                }
-            });
-        }
+        // jinja2 이용해 서버사이드 렌더링 방식으로 바꿈.
+        // $(document).ready(function () {
+        //    // show_matjip();
+        // });
+        // function show_matjip() {
+        //     $.ajax({
+        //         type: "GET",
+        //         url: "/matjip",
+        //         data: {},
+        //         success: function (response) {
+        //             let rows = response['matjip_list']
+        //             console.log(rows)
+        //             for (let i = 0; i < rows.length; i++) {
+        //                 let store_name = rows[i]['store_name']
+        //                 let description = rows[i]['description']
+        //                 let src = rows[i]['src']
+        //                 let num = rows[i]['num']
+        //
+        //                 let temp_html = `<div class="col">
+        //                                         <div class="card h-100">
+        //                                             <a href="/detail" class="list-link" >
+        //                                                 <img src="${src}"
+        //                                                      class="card-img-top" alt="${num}" >
+        //                                                 <div class="card-body">
+        //                                                     <h5 class="card-title">${store_name}</h5>
+        //                                                     <p class="card-text">${description}
+        //                                                     </p>
+        //                                                 </div>
+        //                                             </a>
+        //                                         </div>
+        //                                     </div>`
+        //                 $('#matjip-list').append(temp_html)
+        //             }
+        //         }
+        //     });
+        // }
     </script>
 </head>
 
@@ -172,10 +172,8 @@
     <div class="wrap main-wrap">
         <div class="common-inner banner-wrap">
             <div class="banner-inner">
-                <h2 class="title">local Michelin</h2>
-                <p class="title-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus, neque,
-                    recusandae.
-                </p>
+                <h2 class="title">Local Michelin</h2>
+                <p class="title-desc"> 현지인이 소개하는 현지 맛집들을 소개 합니다~</p>
                 <a href="/post" class="btn btn-post">Post</a>
             </div>
         </div>
