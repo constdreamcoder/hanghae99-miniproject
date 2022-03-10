@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 from flask import Flask, render_template, request, jsonify, redirect, url_for
 from bs4 import BeautifulSoup
 from selenium import webdriver
@@ -8,9 +7,8 @@ import requests
 app = Flask(__name__)
 
 from pymongo import MongoClient
-client = MongoClient('mongodb+srv://test:sparta@cluster0.xo7xh.mongodb.net/Cluster0?retryWrites=true&w=majority')
-=======
-from pymongo import MongoClient
+
+
 import jwt
 import datetime
 import hashlib
@@ -29,15 +27,15 @@ SECRET_KEY = 'SPARTA'
 ca = certifi.where()
 
 client = MongoClient('mongodb+srv://test:sparta@cluster0.xo7xh.mongodb.net/Cluster0?retryWrites=true&w=majority', tlsCAFile=ca)
->>>>>>> origin/main
+
 db = client.dbsparta
 
 @app.route('/')
 def home():
-<<<<<<< HEAD
+
     matjips = list(db.matjip.find({}, {"_id": False}))
     return render_template('index.html', matjips=matjips)
-=======
+
     token_receive = request.cookies.get('mytoken')
     try:
         payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
@@ -46,15 +44,14 @@ def home():
         return redirect(url_for("login", msg="로그인 시간이 만료되었습니다."))
     except jwt.exceptions.DecodeError:
         return redirect(url_for("login", msg="로그인 정보가 존재하지 않습니다."))
->>>>>>> origin/main
+
 
 @app.route('/login')
 def login():
     msg = request.args.get("msg")
     return render_template('loginForm.html', msg=msg)
 
-<<<<<<< HEAD
-=======
+
 
 @app.route('/sign_in', methods=['POST'])
 def sign_in():
@@ -96,7 +93,7 @@ def check_dup():
     exists = bool(db.accounts.find_one({"username": username_receive}))
     return jsonify({'result': 'success', 'exists': exists})
 
->>>>>>> origin/main
+
 @app.route('/post')
 def post():
     return render_template('post.html')
@@ -188,7 +185,7 @@ def post_matjip():
 def detail():
     return render_template('detail.html')
 
-<<<<<<< HEAD
+
 @app.route('/detail/<keyword>')
 def get_detail(keyword):
 
@@ -207,12 +204,12 @@ def comment_post(keyword):
            }
     db.comment.insert_one(doc)
     return jsonify({'result': 'success', 'msg': '댓글 저장 완료'})
-=======
+
 @app.route('/restaurantslist')
 def restaurantslist():
     return render_template('restaurantslist.html')
 
->>>>>>> origin/main
+
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
