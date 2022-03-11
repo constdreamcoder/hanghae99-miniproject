@@ -8,7 +8,7 @@
 https://alef-yud.tistory.com/65
 
 ## 웹사이트 링크
-(완성 후 업로드 예정)
+13.209.15.151
 
 ## 데모영상
 https://www.youtube.com/watch?v=UjxDVoTDPBY
