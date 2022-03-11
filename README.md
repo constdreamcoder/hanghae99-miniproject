@@ -8,7 +8,7 @@
 https://alef-yud.tistory.com/65
 
 ## 웹사이트 링크
-13.209.15.151
+13.209.15.151(주소창에 복사 붙여넣기 해주세요!)
 
 ## 데모영상
 https://www.youtube.com/watch?v=UjxDVoTDPBY
